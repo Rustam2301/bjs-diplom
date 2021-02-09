@@ -5,7 +5,7 @@ let err = new Error('что-то не так!!!');
 
 let logoutUser = new LogoutButton;
 logoutUser.action = () => ApiConnector.logout((response) => {
-  if(response.succsess) location.reload()
+  if(response.success) location.reload()
   else return err});
 
 ApiConnector.current((response) => {
@@ -29,7 +29,7 @@ setInterval(refreshBoard, 60000);
 
 let thisUserMoney = new MoneyManager;
 
-function checkWidget(response, trueString = 'Успешно выполнено!', falseString = 'Что-то пошло не так...') {
+function checkWidget(response, trueString = 'Выполнено!', falseString = 'Что-то не так...') {
   if (response.success) {
     ProfileWidget.showProfile(response.data);
     thisUserMoney.setMessage(response.success, trueString);
@@ -61,5 +61,3 @@ ApiConnector.getFavorites((response) => newTable(response));
 thisUserFavorites.addUserCallback = (data) => ApiConnector.addUserToFavorites(data, (response) => newTable(response));
 
 thisUserFavorites.removeUserCallback = (data) => ApiConnector.removeUserFromFavorites(data, (response) => newTable(response));
-
-console.log('HI');

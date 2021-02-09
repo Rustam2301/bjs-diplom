@@ -5,7 +5,7 @@ let err = new Error('Неверное имя пользователя или п�
 
  thisUser.loginFormCallback = (data) => ApiConnector.login(data, (response)=>{
     console.log(response);
-    if (response.succsess === true) location.reload()
+    if (response.success === true) location.reload()
     else return err
    });
 thisUser.registerFormCallback = (data) => ApiConnector.register(data, (response) =>
