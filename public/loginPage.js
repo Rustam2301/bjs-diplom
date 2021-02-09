@@ -1,12 +1,22 @@
-'use strict'
+'use strict';
 
-let thisUser = new UserForm;
-let err = new Error('Неверное имя пользователя или пароль');
+const thisUser = new UserForm;
 
- thisUser.loginFormCallback = (data) => ApiConnector.login(data, (response)=>{
-    console.log(response);
-    if (response.success === true) location.reload()
-    else return err
-   });
-thisUser.registerFormCallback = (data) => ApiConnector.register(data, (response) =>
-location.reload());
+ thisUser.loginFormCallback = data => {
+    ApiConnector.login(data, response => {
+        if (response.success) {
+            location.reload();
+        } else {
+            userForm.setLoginErrorMessage(response.error);
+        }
+    })
+};
+thisUser.registerFormCallback = data => {
+    ApiConnector.register(data, response => {
+        if (response.success) {
+            location.reload();
+        } else {
+            userForm.setRegisterErrorMessage(response.error);
+        }
+    })
+}
