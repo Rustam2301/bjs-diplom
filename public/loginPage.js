@@ -7,7 +7,7 @@ const thisUser = new UserForm;
         if (response.success) {
             location.reload();
         } else {
-            userForm.setLoginErrorMessage(response.error);
+            thisUser.setLoginErrorMessage(response.error);
         }
     })
 };
@@ -16,7 +16,7 @@ thisUser.registerFormCallback = data => {
         if (response.success) {
             location.reload();
         } else {
-            userForm.setRegisterErrorMessage(response.error);
+            thisUser.setRegisterErrorMessage(response.error);
         }
     })
 }

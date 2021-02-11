@@ -79,9 +79,9 @@ favoritesWidget.addUserCallback = ({ id, name }) => {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage(response.success, `Пользователь ${name} (${id}) успешно добавлен`);
+            favoritesWidget.setMessage(response.success, `Пользователь ${name} ${id} успешно добавлен`);
         } else {
-            moneyManager.setMessage(response.success, response.error);
+            favoritesWidget.setMessage(response.success, response.error);
         }
     })
 }
@@ -92,9 +92,9 @@ favoritesWidget.removeUserCallback = (data) => {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage(response.success, `Пользователь ${name} (${id}) успешно удален из списка`);
+            favoritesWidget.setMessage(response.success, `Пользователь ${name} ${id} успешно удален из списка`);
         } else {
-            moneyManager.setMessage(response.success, response.error);
+            favoritesWidget.setMessage(response.success, response.error);
         }
     })
 }
